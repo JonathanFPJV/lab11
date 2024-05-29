@@ -1,4 +1,23 @@
 <div class="bg-white block mt-6 p-6 border-gray-300 hover:border-indigo-300 hover:ring hover:ring-indigo-200 hover:ring-opacity-50 rounded-md shadow-sm">
+    
+    <div class="flex justify-end">
+            <x-dropdown>
+                <x-slot name="trigger">
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                        </svg>
+                    </button>
+                </x-slot>
+                <x-slot name="content">
+                    <x-dropdown-link :href="route('contacts.edit', $contact)">
+                        Editar
+                    </x-dropdown-link>
+                </x-slot>
+            </x-dropdown>
+    </div>
+
+
     <div class="flex items-center">
         <div class="flex-shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" viewBox="0 0 24 24" xml:space="preserve">

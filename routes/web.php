@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('contacts', ContactController::class)
-    ->only(['index', 'create', 'store'])
+    ->only(['index', 'create', 'store', 'edit', 'update'])
     ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

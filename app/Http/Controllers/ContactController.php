@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class ContactController extends Controller
@@ -34,6 +36,26 @@ class ContactController extends Controller
        ]);
     }
 
+    public function edit(Contact $contact): View
+    {
+        return view('contacts.edit', [
+            'contact' =>$contact,
+        ]);
+    }
+
+    public function update(Request $request, Contact $contact): RedirectResponse
+    {
+        $validated = $request->validate([
+            'first_name' => 'required|regex:/^[\pL\s]+$/u|max:30',
+            'last_name' => 'nullable|regex:/^[\pL\s]+$/u|max:30',
+            'phone' => 'required|digits:9',
+            'email' => 'nullable|email:strict'
+        ]);
+
+        $contact->update($validated);
+
+        return redirect(route('contacts.index'));
+    }
 
 
 }
