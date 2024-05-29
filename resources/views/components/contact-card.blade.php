@@ -13,6 +13,15 @@
                     <x-dropdown-link :href="route('contacts.edit', $contact)">
                         Editar
                     </x-dropdown-link>
+                    <form method="POST" action="{{ route('contacts.destroy', $contact) }}">
+                        @csrf
+                        @method('delete')
+                    <x-dropdown-link :href="route('contacts.destroy', $contact)" onclick="event.preventDefault(); this.closest('form').submit();">
+                        Eliminar
+                    </x-dropdown-link>
+                    </form>
+
+
                 </x-slot>
             </x-dropdown>
     </div>
