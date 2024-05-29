@@ -21,7 +21,9 @@ class ContactController extends Controller
             'first_name' => 'required|regex:/^[\pL\s]+$/u|max:30',
             'last_name' => 'nullable|regex:/^[\pL\s]+$/u|max:30',
             'phone' => 'required|digits:9',
-            'email' => 'nullable|email:strict'
+            'email' => 'nullable|email:strict',
+            'address' => 'nullable|string|max:255',
+            'birthday' => 'nullable|date'
         ]);
 
         $request->user()->contacts()->create($validated);
@@ -49,7 +51,9 @@ class ContactController extends Controller
             'first_name' => 'required|regex:/^[\pL\s]+$/u|max:30',
             'last_name' => 'nullable|regex:/^[\pL\s]+$/u|max:30',
             'phone' => 'required|digits:9',
-            'email' => 'nullable|email:strict'
+            'email' => 'nullable|email:strict',
+            'address' => 'nullable|string|max:255',
+            'birthday' => 'nullable|date'
         ]);
 
         $contact->update($validated);

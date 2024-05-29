@@ -40,6 +40,13 @@
             <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                 {{ $contact->email }}
             </p>
+            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                {{ $contact->address }}
+            </p>
+            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                {{ $contact->birthday ? \Carbon\Carbon::parse($contact->birthday)->format('d/m/Y') : '' }}
+            </p>
+
         </div>
         <div class="flex-shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-600 -scale-x-100" viewBox="0 0 100 100" xml:space="preserve">

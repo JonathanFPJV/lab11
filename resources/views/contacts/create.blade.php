@@ -3,32 +3,48 @@
         <form method="POST" action="{{ route('contacts.store') }}">
             @csrf
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <!-- Existing fields -->
                 <div class="sm:col-span-3">
                     <label for="first_name" class="block text-md font-medium leading-6 text-gray-900">Nombres</label>
                     <div class="mt-2">
-                        <input type="text" name="first_name" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required value="{{ old('first_name') }}">
+                        <input type="text" name="first_name" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required>
                         <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
                     </div>
                 </div>
                 <div class="sm:col-span-3">
                     <label for="last_name" class="block text-md font-medium leading-6 text-gray-900">Apellidos</label>
                     <div class="mt-2">
-                        <input type="text" name="last_name" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" value="{{ old('last_name') }}">
+                        <input type="text" name="last_name" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
                     </div>
                 </div>
                 <div class="sm:col-span-3">
                     <label for="phone" class="block text-md font-medium leading-6 text-gray-900">Número</label>
                     <div class="mt-2">
-                        <input type="text" name="phone" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" value="{{ old('phone') }}" required>
+                        <input type="text" name="phone" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" required>
                         <x-input-error :messages="$errors->get('phone')" class="mt-2" />
                     </div>
                 </div>
                 <div class="sm:col-span-4">
                     <label for="email" class="block text-md font-medium leading-6 text-gray-900">Correo electrónico</label>
                     <div class="mt-2">
-                        <input type="text" name="email" type="email" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" value="{{ old('email') }}">
+                        <input type="text" name="email" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+                </div>
+                <!-- New fields -->
+                <div class="sm:col-span-4">
+                    <label for="address" class="block text-md font-medium leading-6 text-gray-900">Dirección</label>
+                    <div class="mt-2">
+                        <input type="text" name="address" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                    </div>
+                </div>
+                <div class="sm:col-span-4">
+                    <label for="birthday" class="block text-md font-medium leading-6 text-gray-900">Fecha de Nacimiento</label>
+                    <div class="mt-2">
+                        <input type="date" name="birthday" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>
                 </div>
             </div>
@@ -39,3 +55,4 @@
         </form>
     </div>
 </x-app-layout>
+
