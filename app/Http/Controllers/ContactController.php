@@ -6,6 +6,7 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ContactController extends Controller
 {
@@ -23,8 +24,13 @@ class ContactController extends Controller
             'phone' => 'required|digits:9',
             'email' => 'nullable|email:strict',
             'address' => 'nullable|string|max:255',
-            'birthday' => 'nullable|date'
+            'birthday' => 'nullable|date',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('profile_picture')) {
+            $validated['profile_picture'] = $request->file('profile_picture')->store('profile_pictures', 'public');
+        }
 
         $request->user()->contacts()->create($validated);
 
@@ -53,8 +59,16 @@ class ContactController extends Controller
             'phone' => 'required|digits:9',
             'email' => 'nullable|email:strict',
             'address' => 'nullable|string|max:255',
-            'birthday' => 'nullable|date'
+            'birthday' => 'nullable|date',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('profile_picture')) {
+            if ($contact->profile_picture) {
+                Storage::disk('public')->delete($contact->profile_picture);
+            }
+            $validated['profile_picture'] = $request->file('profile_picture')->store('profile_pictures', 'public');
+        }
 
         $contact->update($validated);
 

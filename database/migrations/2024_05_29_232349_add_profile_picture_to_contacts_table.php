@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             //
+            $table->string('profile_picture')->nullable();
         });
     }
 
@@ -23,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             //
+            $table->dropColumn('profile_picture');
         });
     }
 };

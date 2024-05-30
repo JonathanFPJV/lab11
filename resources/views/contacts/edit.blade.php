@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-        <form method="POST" action="{{ route('contacts.update', $contact) }}">
+        <form method="POST" action="{{ route('contacts.update', $contact) }}" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -48,6 +48,20 @@
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
                     </div>
                 </div>
+                 <!-- Profile Picture Field -->
+                 <div class="sm:col-span-6">
+                    <label for="profile_picture" class="block text-md font-medium leading-6 text-gray-900">Foto de Perfil</label>
+                    <div class="mt-2">
+                        <input type="file" name="profile_picture" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                        <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
+                    </div>
+                </div>
+
+                @if (isset($contact) && $contact->profile_picture)
+                    <div class="sm:col-span-6 mt-4">
+                        <img src="{{ asset('storage/' . $contact->profile_picture) }}" alt="Foto de Perfil" class="h-32 w-32 rounded-full">
+                    </div>
+                @endif
             </div>
             <div class="mt-8 flex items-center justify-center gap-x-6">
                 <x-primary-button>Actualizar</x-primary-button>

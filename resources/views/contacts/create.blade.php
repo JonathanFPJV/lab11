@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-        <form method="POST" action="{{ route('contacts.store') }}">
+        <form method="POST" action="{{ route('contacts.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <!-- Existing fields -->
@@ -45,6 +45,14 @@
                     <div class="mt-2">
                         <input type="date" name="birthday" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <x-input-error :messages="$errors->get('birthday')" class="mt-2" />
+                    </div>
+                </div>
+                <!-- Profile Picture -->
+                <div class="sm:col-span-6">
+                    <label for="profile_picture" class="block text-md font-medium leading-6 text-gray-900">Foto de Perfil</label>
+                    <div class="mt-2">
+                        <input type="file" name="profile_picture" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
+                        <x-input-error :messages="$errors->get('profile_picture')" class="mt-2" />
                     </div>
                 </div>
             </div>
