@@ -82,4 +82,9 @@ class ContactController extends Controller
         return redirect(route('contacts.index'));
     }
 
+    public function show(Contact $contact)
+    {
+        return view('contacts.show', compact('contact'));
+    }
+
 }

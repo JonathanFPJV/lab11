@@ -65,5 +65,10 @@
         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
             {{ $contact->phone }}
         </div>
+
+        <!-- Enlace al perfil -->
+        <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white ms-4">
+            <a href="{{ route('contacts.show', $contact) }}" class="text-indigo-600 hover:text-indigo-900">Ver Perfil</a>
+        </div>
     </div>
 </div>
